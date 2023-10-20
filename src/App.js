@@ -13,15 +13,15 @@ function App() {
   const [mode , setMode] = useState('light');
   const [alert, setAlert] = useState(null);
 
- const showAlert = (message,type)=>{
-  setAlert({
-    msg : message,
-    type:type
-  })
-  setTimeout(()=>{
-    setAlert(null);
-  } , 1000)
- }
+//  const showAlert = (message,type)=>{
+//   setAlert({
+//     msg : message,
+//     type:type
+//   })
+//   setTimeout(()=>{
+//     setAlert(null);
+//   } , 1000)
+//  }
 
 
   const toggleMode = ()=>{

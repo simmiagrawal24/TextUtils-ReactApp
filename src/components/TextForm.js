@@ -28,10 +28,11 @@ export default function TextForm(props) {
   };
 
   const handleCopy = ()=>{
-    let text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+    // let text = document.getElementById("myBox");
+    // text.select();
+    //navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
+    //document.getSelection().removeAllRanges();
     props.showAlert("Text Copied to Clipboard" , "success")
   }
 
@@ -48,7 +49,7 @@ export default function TextForm(props) {
     <>
       {/* <h1>{props.heading}</h1> */}
     <div className="container" style ={{ color: props.mode ==='dark' ? 'white' : 'black'}}>
-      <h1 className = 'mb-4'> {props.heading}</h1>
+      <h2 className = 'mb-4'> {props.heading}</h2>
       <div className="mb-3">
         {/* <label htmlFor="myBox" className="form-label">
           {props.heading}
@@ -60,7 +61,7 @@ export default function TextForm(props) {
           value={text}
           placeholder="Enter text here"
           onChange={handleOnChange}
-          style ={{backgroundColor: props.mode ==='dark' ? '#13466e' : 'white'}}
+          style ={{backgroundColor: props.mode ==='dark' ? '#13466e' : 'white', color: props.mode ==='dark' ? 'white' : 'black'}}
         ></textarea>
       </div>
       <button disabled = {text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
@@ -81,7 +82,7 @@ export default function TextForm(props) {
     </div>
     <div className="container my-3" style ={{color: props.mode ==='dark' ? 'white' : 'black'}}>
       <h3>Your Text Summary</h3>
-      <p>{text.split(" ").filter((element)=>{
+      <p>{text.split(/\s+/).filter((element)=>{
         return element.length!==0
       }).length} words and {text.length} characters</p>
       <p>{0.008*text.split(" ").filter((element)=>{
